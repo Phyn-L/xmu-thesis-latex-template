@@ -4,7 +4,32 @@
 
 设训练集为 $\mathcal{D}=\{(x_i,y_i)\}_{i=1}^{N}$，其中 $x_i$ 表示输入样本，$y_i$ 表示对应标签。本文目标是学习一个参数为 $\theta$ 的模型 $f_\theta$，使其在测试数据上取得良好的泛化性能。
 
+在正式论文中，问题定义需要回答三个问题：输入是什么，输出是什么，优化目标是什么。若任务涉及多模态数据、序列数据或图结构数据，还应明确样本内部各组成部分的记号，避免后文符号混乱。
+
+\section{符号约定}{Notation}
+
+表\ref{tab:method-notation}给出了方法章节中常用符号的写法示例。建议在方法章节开头统一列出关键符号，尤其是当论文包含多个损失项、多个模型分支或多个数据集合时。
+
+\begin{table}[htbp]
+    \centering
+    \caption{方法章节符号约定示例}
+    \label{tab:method-notation}
+    \begin{tabular}{ll}
+        \toprule
+        符号 & 含义 \\
+        \midrule
+        $\mathcal{D}$ & 训练数据集 \\
+        $N$ & 训练样本数量 \\
+        $f_\theta$ & 参数为 $\theta$ 的预测模型 \\
+        $\hat{y}$ & 模型预测结果 \\
+        $\lambda$ & 损失权重系数 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
 \section{模型设计}{Model Design}
+
+方法章节应先给出整体框架，再解释关键模块。整体框架需要说明数据如何进入模型，中间表示如何计算，最终输出如何得到。关键模块则应解释其设计动机、输入输出维度以及与其他模块的连接关系。
 
 公式\eqref{eq:empirical-risk}给出了经验风险最小化的基本形式：
 
@@ -13,11 +38,34 @@
     \label{eq:empirical-risk}
 \end{equation}
 
-其中，$\ell(\cdot,\cdot)$ 表示损失函数。正式论文中，公式之后应解释每个符号的含义，并说明该公式在方法中的作用。
+其中，$\ell(\cdot,\cdot)$ 表示损失函数。若模型包含正则项，可以写成
+
+\begin{equation}
+    \mathcal{L}(\theta)=
+    \frac{1}{N}\sum_{i=1}^{N}\ell(f_\theta(x_i), y_i)
+    +\lambda\Omega(\theta),
+    \label{eq:regularized-objective}
+\end{equation}
+
+其中，$\Omega(\theta)$ 表示正则化项，$\lambda$ 用于控制正则项的权重。正式写作时，应解释为什么需要该项，以及它对应解决什么问题。
+
+\section{训练目标}{Training Objective}
+
+如果方法由多个目标组成，可以将总损失写成若干子损失的加权和：
+
+\begin{equation}
+    \mathcal{L}_{\mathrm{total}}
+    =\mathcal{L}_{\mathrm{main}}
+    +\alpha\mathcal{L}_{\mathrm{aux}}
+    +\beta\mathcal{L}_{\mathrm{reg}},
+    \label{eq:total-loss}
+\end{equation}
+
+其中，$\mathcal{L}_{\mathrm{main}}$ 是主要任务损失，$\mathcal{L}_{\mathrm{aux}}$ 是辅助监督损失，$\mathcal{L}_{\mathrm{reg}}$ 是正则化损失。若引入辅助损失，应在实验中通过消融验证其必要性，而不是只在方法中给出直觉解释。
 
 \section{算法流程}{Algorithm}
 
-算法\ref{alg:training-example}展示了算法环境的基本使用方式。
+算法\ref{alg:training-example}展示了算法环境的基本使用方式。算法描述应比正文更精炼，重点呈现输入、输出和关键步骤；具体工程细节可以放在实现细节或附录中。
 
 \begin{algorithm}[htbp]
     \caption{训练流程示例}
@@ -28,9 +76,16 @@
         \State 初始化模型参数 $\theta$
         \For{$t=1$ to $T$}
             \State 从 $\mathcal{D}$ 中采样一个小批量数据
-            \State 计算损失 $\ell(f_\theta(x), y)$
-            \State 使用梯度下降更新 $\theta \leftarrow \theta-\eta\nabla_\theta \ell$
+            \State 计算预测结果 $\hat{y}=f_\theta(x)$
+            \State 计算损失 $\mathcal{L}_{\mathrm{total}}$
+            \State 使用梯度下降更新 $\theta \leftarrow \theta-\eta\nabla_\theta \mathcal{L}_{\mathrm{total}}$
         \EndFor
         \State \Return $\theta$
     \end{algorithmic}
 \end{algorithm}
+
+\section{实现细节}{Implementation Details}
+
+实现细节部分应说明足以复现实验的配置，例如优化器、学习率、批大小、训练轮数、随机种子、硬件环境和软件版本。对于深度学习方法，还应说明输入尺寸、特征维度、归一化方式、模型初始化和检查点选择标准。
+
+若本文方法依赖开源代码或预训练模型，应说明使用的版本和修改内容。若复现结果与原论文存在差异，应给出可能原因，例如数据处理不同、训练资源有限或评价脚本不一致。
