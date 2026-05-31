@@ -38,7 +38,7 @@ latexmk -xelatex -interaction=nonstopmode -file-line-error main.tex
 
 ## 字体说明
 
-默认入口文件使用 `font=fandol`，便于在 TeX Live 环境中直接编译。工作区可以保留本地字体目录用于个人编译，但公开发布前应确认字体文件的授权允许再提交。若需要使用 `font/` 目录中的字体，可将 `main.tex` 中的文档类选项改为 `font=local`；若使用系统字体，可根据系统改为 `font=mac` 或 `font=windows`。
+默认入口文件使用 `font=fandol`，便于在 TeX Live 环境中直接编译。在 Overleaf 上使用时，建议将 `main.tex` 中的文档类选项改为 `font=overleaf`，该选项使用 Overleaf 支持的 Times New Roman、Arial、TeX Gyre Termes Math 与 Noto CJK 字体，不需要上传本地字体。若需要使用 `font/` 目录中的字体，可改为 `font=local`；若使用系统字体，可根据系统改为 `font=mac` 或 `font=windows`。
 
 ## 学校规范自查
 

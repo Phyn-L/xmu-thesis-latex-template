@@ -46,6 +46,7 @@
 
 \bool_set_false:N \l__xmu_advanced_font_bool
 \bool_set_false:N \l__xmu_local_font_bool
+\bool_set_false:N \l__xmu_overleaf_font_bool
 \bool_set_false:N \l__xmu_undergraduate_bool
 \bool_set_false:N \l__xmu_master_bool
 \bool_set_false:N \l__xmu_doctor_bool
@@ -96,6 +97,8 @@
             \msg_warning:nn { ubuntu font } { msg } ,
     font / local .code:n    = \PassOptionsToClass{fontset =none}{ctexbook}
         \bool_set_true:N \l__xmu_local_font_bool ,
+    font / overleaf .code:n = \PassOptionsToClass{fontset =none}{ctexbook}
+        \bool_set_true:N \l__xmu_overleaf_font_bool ,
     font / advance  .code:n    = \PassOptionsToClass{fontset =none}{ctexbook}
         \bool_set_true:N \l__xmu_advanced_font_bool ,
     font / empty    .code:n    = \msg_new:nnn { font } { msg } {
@@ -104,7 +107,7 @@
         }
         \msg_warning:nn { font } { msg },
     font / unknown  .code:n = \msg_error:nnxxx { xmuthesis } { unknown-choice }{ font }{
-        empty, adobe, fandol, founder, mac, macnew, macold, ubuntu, windows, local, advance
+        empty, adobe, fandol, founder, mac, macnew, macold, ubuntu, windows, local, overleaf, advance
         }{
             The~choice~' #1 '~is~invalid~for~font
     },
@@ -181,8 +184,10 @@
 
 \IfXeTeXTF{
 \RequirePackage{unicode-math}
-\setmainfont{Times~New~Roman}  % Times~New~Roman  Source~Serif~Pro
-\setsansfont{Arial}            % Arial  Source~Sans~Pro
+\bool_if:NF \l__xmu_overleaf_font_bool{
+    \setmainfont{Times~New~Roman}  % Times~New~Roman  Source~Serif~Pro
+    \setsansfont{Arial}            % Arial  Source~Sans~Pro
+}
 
 \unimathsetup{
     math-style = ISO     ,
@@ -269,6 +274,17 @@
     ]{SimSong.ttc}
     \setCJKsansfont[Path=font/]{SimHei.ttf}
     \setCJKmonofont[Path=font/]{SimSong.ttc}
+}
+
+\bool_if:NT \l__xmu_overleaf_font_bool{
+    % Fonts available in TeX Live/Overleaf; no project-local font files required.
+    \setmainfont{Times New Roman}
+    \setsansfont{Arial}
+    \setmonofont{Latin Modern Mono}
+    \setmathfont{TeX Gyre Termes Math}
+    \setCJKmainfont{Noto Serif CJK SC}
+    \setCJKsansfont{Noto Sans CJK SC}
+    \setCJKmonofont{Noto Sans Mono CJK SC}
 }
 
 \RenewDocumentCommand\chaptermark{m}{
