@@ -1,107 +1,16 @@
-% \iffalse meta-comment
-% !TEX root = xmuthesis.tex
-% !TEX program = xelatex
+% xmuthesis.dtx
+% Source notes for the XMU thesis template class.
 %
-% !TeX encoding = UTF-8
+% This file is kept as a concise reference for maintaining xmuthesis.cls.
 %
-%% File: xmuthesis.dtx
-%
-% Copyright (C) 2019-2020 CamuseCao
-%
-% It may be distributed and/or modified under the conditions of the
-% LaTeX Project Public License (LPPL), either version 1.3c of this
-% license or (at your option) any later version.  The latest version
-% of this license is in the file
-%
-%    https://www.latex-project.org/lppl.txt
-%
-%
-%
-%
-%<*driver>
-\def\nameofplainTeX{plain}
-\ifx\fmtname\nameofplainTeX\else
-    \expandafter\begingroup
-\fi
-%<*install>
-% \input l3docstrip.tex
-\input ctxdocstrip %
-\keepsilent
-\askforoverwritefalse
-\preamble
-<!-- 
-----------------------------------------------------------------
-xmuthesis --- A LaTeX template for XMU thesis writing
-E-mail: camusecao@gmail.com
-Released under the LaTeX Project Public License v1.3c or later
-See http://www.latex-project.org/lppl.txt
-----------------------------------------------------------------
--->
-\endpreamble
-% stop docstrip adding \endinput
-\postamble
-<!-- 
-Copyright (C) 2019 by CamuseCao <https://camusecao.top>
-
-This work may be distributed and/or modified under the
-conditions of the LaTeX Project Public License (LPPL), either
-version 1.3c of this license or (at your option) any later
-version.  The latest version of this license is in the file:
-
-http://www.latex-project.org/lppl.txt
-
-This work is "maintained" (as per LPPL maintenance status) by
-CamuseCao.
-
-This work consists of the file  xmuthesis.dtx
-and the derived files           xmuthesis.cls,
-                                xmuthesis.pdf and
-                                xmulogo.sty.
-                                
--->
-\endpostamble
-
-\generate{
-    \usedir{tex/latex/\jobname}
-    \file{\jobname.cls}{\from{\jobname.dtx}{class}}
-    \file{xmulogo.sty}{\from{\jobname.dtx}{logo}}
-}
-% \generate{\file{l3doc.ist}{\from{l3doc.dtx}{docist}}}
-\Msg{---------------------}
-\Msg{| End of extracting |}
-\Msg{---------------------}
-\ifx\fmtname\nameofplainTeX
-    \expandafter\endbatchfile
-\else
-    \expandafter\endgroup
-\fi
-%</install>
-%</driver>
-%
-%<*driver|class>
-% !TEX root = ./xmu.tex
 \NeedsTeXFormat{LaTeX2e}
 
 \RequirePackage{ expl3, xparse, xtemplate, l3keys2e, scrlfile }
 
 \RequirePackage[l2tabu, orthodox]{nag}
-%</driver|class>
-%
-%<*driver>
-\ProvidesFile{\jobname.dtx}[2020/10/09 v0.4.1 XMU thesis]
-\documentclass{ctxdoc}% l3doc ctxdoc
-\OnlyDescription
-\begin{document}
-    \DocInput{\jobname.dtx}
-    \IndexLayout
-    \PrintChanges
-    \PrintIndex
-\end{document}
-%</driver>
-% \fi
 % \changes{v0.4}{2020/10/06}{引入 \LaTeX{3} 添加本地字体支持以及使用 lppl 许可证等}
 % \changes{v0.3}{2020/08/09}{较少宏包的依赖以及修复部分问题}
-% \changes{v0.2}{2019/07/02}{增加平台支持以及发布 xmulogo 宏包等}
+% \changes{v0.2}{2019/07/02}{增加平台支持}
 % \changes{v0.1.1}{2019/02/19}{添加 a3 封面以及编译脚本等}
 % \changes{v0.1}{2019/01/30}{第一版}
 % \CheckSum{0}
@@ -130,13 +39,13 @@ and the derived files           xmuthesis.cls,
 % \date{\filedate\quad\fileversion}
 % \maketitle
 % \begin{abstract}
-% xmuthesis 是面向厦门大学毕业论文写作的 \LaTeX{} 模板类文件。本文件保留模板类与 xmulogo 宏包的源码，供维护和二次开发使用。普通使用者通常只需要阅读仓库中的 README、示例正文和学校规范整理文件。
+% xmuthesis 是面向厦门大学毕业论文写作的 \LaTeX{} 模板类文件。本文件保留模板类源码，供维护和二次开发使用。普通使用者通常只需要阅读仓库中的 README、示例正文和学校规范整理文件。
 % \end{abstract}
 % \tableofcontents
 % \begin{documentation}
 % \section{介绍}
 %
-% 本文件来自开源 xmuthesis 模板并在其基础上整理维护。代码遵循 LPPL 协议，版权和许可证信息见文件开头。当前仓库面向公开论文模板使用，示例论文内容、编译方式和规范自查说明请优先参考 README。
+% 本文件来自开源 xmuthesis 模板并在其基础上整理维护。当前仓库面向公开论文模板使用，示例论文内容、编译方式和规范自查说明请优先参考 README。
 %
 % \section{使用示例}
 % \subsection{最小示例}
@@ -147,7 +56,7 @@ and the derived files           xmuthesis.cls,
 %     title                   = 你的论文题目                ,
 %     date                    = \today                      ,
 %     class                   = 2022级                      ,
-%     studentnumber           = 1234567890                  ,
+%     studentnumber           = 19900207                  ,
 %     department              = 信息学院                    ,
 %     major                   = 人工智能                    ,
 %     advisor                 = 校内指导老师 \quad 职称     ,
@@ -168,7 +77,6 @@ and the derived files           xmuthesis.cls,
 %     chairman                =  张三                       , % 答辩委员会主席
 %     referee                 =  李四                       , % 评阅人
 %   }
-%   \usepackage{xmulogo}
 %   \begin{document}
 %   \maketitle
 %   \chapter*{致谢}
@@ -444,20 +352,7 @@ and the derived files           xmuthesis.cls,
 %   用于产生带圈的数字，产生带圈的数字用 \verb|\circled{1}| 。
 % \end{function}
 %
-% \section{xmulogo 宏包}
-%
-% 为了方便输出高质量的校徽和校名图片，特意开发了 xmulogo 宏包。主要提供了两个命令。
-% \begin{function}{\xmulogo, \xmulogon}
-%   \verb|\xmulogo| ， \verb|\xmulogon| 分别用于产生校徽和校名。两者的用法完全一样。一下以 \verb|\xmulogo| 为例介绍其用法。用法为 \verb|\xmulogo[scale]{r,g,b}| ，其中 \verb|scale| 控制图片的尺寸，填入 $0\sim 1$ 之间的数。花括号的 \verb|{r,g,b}| 是用与控制颜色的，采用 rgb 的颜色控制方法。它是一个可选参数，不填则采用默认的颜色。以下用法均为正确用法。
-% \begin{ctexexam}
-%   \xmulogo
-%   \xmulogo[0.5]
-%   \xmulogo{0.1,0.15,0.9}
-%   \xmulogo[0.4]{0.1,0.1,0.9}
-% \end{ctexexam}
-% \end{function}
-%
-% 模板封面页在 \verb|figs/xmu-flag.pdf| 不存在时会调用 \verb|xmulogo| 宏包生成相应图片。若追求更快编译速度，可以在 \verb|figs| 目录放入预生成的 \verb|xmu-flag.pdf|。
+% 模板封面页使用 \verb|figs/xmu-flag.pdf|。请保留该文件，避免封面图片缺失。
 %
 % \section{参考文献与引用}
 %
@@ -490,7 +385,6 @@ and the derived files           xmuthesis.cls,
 %\begin{implementation}
 % \clearpage
 % \section{代码实现}
-%<*class>
 %    \begin{macrocode}
 \ExplSyntaxOn
 \def\IfXeTeXTF#1#2{\csname sys_if_engine_xetex:TF\endcsname{#1}{#2}}
@@ -1116,9 +1010,7 @@ and the derived files           xmuthesis.cls,
     \bool_if:NTF \l__xmu_undergraduate_bool{
 %        \input{Settings/Contents/undergraduate-titlepage.tex}
 \begin{center}
-    \IfFileExists{figs/xmu-flag.pdf}{
-        \includegraphics[width=7cm]{xmu-flag}
-        }{\xmulogo[0.32]}
+    \includegraphics[width=7cm]{xmu-flag}
     \par
     \vspace{2ex}
 
@@ -1200,9 +1092,7 @@ and the derived files           xmuthesis.cls,
         \quad 密级 \CJKunderline{\l__xmu_security_classification_tl}\par 
         学号：\l__xmu_studentnumber_tl\hfill UDC\;
         \CJKunderline{\l__xmu_UDC_tl}\par\vspace{6ex}
-        \centering\IfFileExists{figs/xmu-flag.pdf}{
-            \includegraphics[width=5cm]{xmu-flag}
-            }{\xmulogon[0.65]}\par\vspace{4ex}
+        \centering\includegraphics[width=5cm]{xmu-flag}\par\vspace{4ex}
     }
     {
         \rmfamily\bfseries\zihao{-2}
@@ -1475,112 +1365,4 @@ and the derived files           xmuthesis.cls,
 \keys_set:nn { xmu } { #1 }}
 
 %    \end{macrocode}
-%</class>
-%<*logo>
-%    \begin{macrocode}
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{xmulogo}[2019/06/07 v0.4.1 xmulogo]
-
-\RequirePackage{xparse,tikz,xcolor}
-\usetikzlibrary{shapes,decorations.pathmorphing}%snakes
-
-\NewDocumentCommand\xmulogon{og}{%
-    \IfNoValueTF {#1}{
-        \IfNoValueTF {#2}{
-            \definecolor{xmucolor}{rgb}{0.09411765,0.15294118,0.30980393}
-            \begin{tikzpicture}[x=.5pt, y=.5pt]
-                \xmuxiamendaxue
-            \end{tikzpicture}
-            }{
-            \definecolor{xmucolor}{rgb}{#2}
-            \begin{tikzpicture}[x=.5pt, y=.5pt]
-                \xmuxiamendaxue
-            \end{tikzpicture}
-            }  
-        }{
-        \IfNoValueTF {#2}{
-            \definecolor{xmucolor}{rgb}{0.09411765,0.15294118,0.30980393}
-            \begin{tikzpicture}[x=.5pt, y=.5pt,scale=#1]
-                \xmuxiamendaxue
-            \end{tikzpicture}
-            }{
-            \definecolor{xmucolor}{rgb}{#2}
-            \begin{tikzpicture}[x=.5pt, y=.5pt,scale=#1]
-                \xmuxiamendaxue
-            \end{tikzpicture}
-            } 
-    }
-}
-
-\NewDocumentCommand\xmulogo{og}{%
-    \IfNoValueTF {#1}{
-        \IfNoValueTF {#2}{
-            \definecolor{xmucolor}{rgb}{0.09411765,0.15294118,0.30980393}
-            \resizebox{\textwidth}{!}{%
-            \begin{tikzpicture}[x=.5pt, y=.5pt,scale=0.85]
-                \begin{scope}
-                \xmumainpart
-                \end{scope}    
-                \begin{scope}[xshift=4.6cm,yshift=5.1cm]
-                \begin{scope}[x=.5pt,y=.5pt,xscale=-1,xshift=-9.5cm]
-                \xmuleftpart
-                \end{scope}
-                \begin{scope}[x=.5pt, y=.5pt,xscale=1]
-                \xmuleftpart
-                \end{scope}
-                \end{scope}
-            \end{tikzpicture}}
-            }{
-            \definecolor{xmucolor}{rgb}{#2}
-            \resizebox{\textwidth}{!}{%
-            \begin{tikzpicture}[x=.5pt, y=.5pt,scale=0.85]
-                \begin{scope}
-                \xmumainpart
-                \end{scope}    
-                \begin{scope}[xshift=4.6cm,yshift=5.1cm]
-                \begin{scope}[x=.5pt,y=.5pt,xscale=-1,xshift=-9.5cm]
-                \xmuleftpart
-                \end{scope}
-                \begin{scope}[x=.5pt, y=.5pt,xscale=1]
-                \xmuleftpart
-                \end{scope}
-                \end{scope}
-            \end{tikzpicture}}
-            }  
-        }{
-        \IfNoValueTF {#2}{
-            \definecolor{xmucolor}{rgb}{0.09411765,0.15294118,0.30980393}
-            \resizebox{#1\textwidth}{!}{%
-            \begin{tikzpicture}[x=.5pt, y=.5pt,scale=0.85]
-                \begin{scope}
-                \xmumainpart
-                \end{scope}    
-                \begin{scope}[xshift=4.6cm,yshift=5.1cm]
-                \begin{scope}[x=.5pt,y=.5pt,xscale=-1,xshift=-9.5cm]
-                \xmuleftpart
-                \end{scope}
-                \begin{scope}[x=.5pt, y=.5pt,xscale=1]
-                \xmuleftpart
-                \end{scope}
-                \end{scope}
-            \end{tikzpicture}}
-            }{
-            \definecolor{xmucolor}{rgb}{#2}
-            \resizebox{#1\textwidth}{!}{%
-            \begin{tikzpicture}[x=.5pt, y=.5pt,scale=0.85]
-                \begin{scope}
-                \xmumainpart
-                \end{scope}    
-                \begin{scope}[xshift=4.6cm,yshift=5.1cm]
-                \begin{scope}[x=.5pt,y=.5pt,xscale=-1,xshift=-9.5cm]
-                \xmuleftpart
-                \end{scope}
-                \begin{scope}[x=.5pt, y=.5pt,xscale=1]
-                \xmuleftpart
-                \end{scope}
-                \end{scope}
-            \end{tikzpicture}}
-            } 
-    }
-}
 \endinput
