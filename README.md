@@ -23,7 +23,8 @@
 2. 在 `body/` 目录中撰写各章节内容。
 3. 将图片放入 `figs/`，将大表格放入 `tabs/`。
 4. 在 `Reference.bib` 中维护参考文献。
-5. 使用 XeLaTeX 编译：
+5. 可参考 `Xiamen University Thesis Guidelines.md` 对照学校论文规范检查格式。
+6. 使用 XeLaTeX 编译：
 
 ```bash
 make
@@ -37,11 +38,15 @@ latexmk -xelatex -interaction=nonstopmode -file-line-error main.tex
 
 ## 字体说明
 
-默认入口文件使用 `font=fandol`，便于在 TeX Live 环境中直接编译。工作区可以保留本地字体目录用于个人编译，但公开发布前应确认字体文件的授权允许再提交。若需要使用 `font/` 目录中的字体，可将 `main.tex` 中的文档类选项改为 `font=overleaf`；若使用系统字体，可根据系统改为 `font=mac` 或 `font=windows`。
+默认入口文件使用 `font=fandol`，便于在 TeX Live 环境中直接编译。工作区可以保留本地字体目录用于个人编译，但公开发布前应确认字体文件的授权允许再提交。若需要使用 `font/` 目录中的字体，可将 `main.tex` 中的文档类选项改为 `font=local`；若使用系统字体，可根据系统改为 `font=mac` 或 `font=windows`。
+
+## 学校规范自查
+
+仓库中的 `Xiamen University Thesis Guidelines.md` 整理了学校论文格式要求，适合在定稿前对封面信息、摘要、目录、正文层级、图表、参考文献等部分进行自查。使用 Agent 辅助检查时，可以让 Agent 同时读取该文件和当前论文源码，逐项核对格式风险。
 
 ## 个人签名
 
-模板不会提交个人手写签名。若需要在本地生成最终版，可将签名图片命名为 `figs/sign.png`；该文件已被 `.gitignore` 忽略，不应上传到公开仓库。
+仓库提供的 `figs/sign.png` 是示意签名图，用于展示签名图片的排版位置。正式使用时，可替换为自己的签名图片；若不提供该文件，模板会自动显示空白签名线。
 
 ## 发布到 GitHub 前的检查
 
@@ -62,4 +67,4 @@ git push -u origin main
 git status --short
 ```
 
-确认没有签名图片、编译产物、真实论文图片、真实论文 PDF 或个人字体文件被加入提交。
+确认没有真实签名图片、真实论文图片、真实论文 PDF 或未确认授权的字体文件被加入提交。

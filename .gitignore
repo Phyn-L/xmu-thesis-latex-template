@@ -25,13 +25,8 @@
 *.vrb
 *.dvi
 
-# Generated output
-main.pdf
-
 # Private local files
-figs/sign.png
 font/
-Xiamen University Thesis Guidelines.md
 *修改意见*.md
 *.bak
 *.tmp

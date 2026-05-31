@@ -99,7 +99,7 @@ and the derived files           xmuthesis.cls,
 \end{document}
 %</driver>
 % \fi
-% \changes{v0.4}{2020/10/06}{引入 \LaTeX{3} 添加 overleaf 支持以及使用 lppl 许可证等}
+% \changes{v0.4}{2020/10/06}{引入 \LaTeX{3} 添加本地字体支持以及使用 lppl 许可证等}
 % \changes{v0.3}{2020/08/09}{较少宏包的依赖以及修复部分问题}
 % \changes{v0.2}{2019/07/02}{增加平台支持以及发布 xmulogo 宏包等}
 % \changes{v0.1.1}{2019/02/19}{添加 a3 封面以及编译脚本等}
@@ -295,7 +295,7 @@ and the derived files           xmuthesis.cls,
 %   \item[macold] 同上
 %   \item[ubuntu] 同上
 %   \item[windows] 同上
-%   \item[overleaf] 当模板在 overleaf 平台运行时，请使用该选项。这将调用 noto 中文字体
+%   \item[local] 使用项目 \verb|font/| 目录中的本地字体文件
 % \end{optdesc}
 % 以 fandol 为例，应该使用
 % \begin{frameverb}
@@ -678,7 +678,7 @@ and the derived files           xmuthesis.cls,
 \PassOptionsToPackage{sort&compress}{natbib}
 
 \bool_set_false:N \l__xmu_advanced_font_bool
-\bool_set_false:N \l__xmu_overleaf_font_bool
+\bool_set_false:N \l__xmu_local_font_bool
 \bool_set_false:N \l__xmu_undergraduate_bool
 \bool_set_false:N \l__xmu_master_bool
 \bool_set_false:N \l__xmu_doctor_bool
@@ -727,8 +727,8 @@ and the derived files           xmuthesis.cls,
             ~you~should~download~the~necessary~font~and~put~them~in~the~right~place.
             }
             \msg_warning:nn { ubuntu font } { msg } ,
-    font / overleaf .code:n    = \PassOptionsToClass{fontset =none}{ctexbook}
-        \bool_set_true:N \l__xmu_overleaf_font_bool ,
+    font / local .code:n    = \PassOptionsToClass{fontset =none}{ctexbook}
+        \bool_set_true:N \l__xmu_local_font_bool ,
     font / advance  .code:n    = \PassOptionsToClass{fontset =none}{ctexbook}
         \bool_set_true:N \l__xmu_advanced_font_bool ,
     font / empty    .code:n    = \msg_new:nnn { font } { msg } {
@@ -737,7 +737,7 @@ and the derived files           xmuthesis.cls,
         }
         \msg_warning:nn { font } { msg },
     font / unknown  .code:n = \msg_error:nnxxx { xmuthesis } { unknown-choice }{ font }{
-        empty, adobe, fandol, founder, mac, macnew, macold, ubuntu, windows, advance 
+        empty, adobe, fandol, founder, mac, macnew, macold, ubuntu, windows, local, advance
         }{ 
             The~choice~' #1 '~is~invalid~for~font 
     },
@@ -894,8 +894,8 @@ and the derived files           xmuthesis.cls,
         StylisticSet       = 8] {XITSMath-Regular}
 }
 
-\bool_if:NT \l__xmu_overleaf_font_bool{
-    % [Modified] Original overleaf font settings kept for reference.
+\bool_if:NT \l__xmu_local_font_bool{
+    % Use local fonts from the font/ directory.
     % \setmainfont{Noto~Serif}
     % \setsansfont{Noto~Sans}
     % \setmonofont{Noto~Mono}

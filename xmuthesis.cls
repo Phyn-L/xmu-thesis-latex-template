@@ -45,7 +45,7 @@
 \PassOptionsToPackage{sort&compress}{natbib}
 
 \bool_set_false:N \l__xmu_advanced_font_bool
-\bool_set_false:N \l__xmu_overleaf_font_bool
+\bool_set_false:N \l__xmu_local_font_bool
 \bool_set_false:N \l__xmu_undergraduate_bool
 \bool_set_false:N \l__xmu_master_bool
 \bool_set_false:N \l__xmu_doctor_bool
@@ -94,8 +94,8 @@
             ~you~should~download~the~necessary~font~and~put~them~in~the~right~place.
             }
             \msg_warning:nn { ubuntu font } { msg } ,
-    font / overleaf .code:n    = \PassOptionsToClass{fontset =none}{ctexbook}
-        \bool_set_true:N \l__xmu_overleaf_font_bool ,
+    font / local .code:n    = \PassOptionsToClass{fontset =none}{ctexbook}
+        \bool_set_true:N \l__xmu_local_font_bool ,
     font / advance  .code:n    = \PassOptionsToClass{fontset =none}{ctexbook}
         \bool_set_true:N \l__xmu_advanced_font_bool ,
     font / empty    .code:n    = \msg_new:nnn { font } { msg } {
@@ -104,7 +104,7 @@
         }
         \msg_warning:nn { font } { msg },
     font / unknown  .code:n = \msg_error:nnxxx { xmuthesis } { unknown-choice }{ font }{
-        empty, adobe, fandol, founder, mac, macnew, macold, ubuntu, windows, advance
+        empty, adobe, fandol, founder, mac, macnew, macold, ubuntu, windows, local, advance
         }{
             The~choice~' #1 '~is~invalid~for~font
     },
@@ -255,8 +255,8 @@
         StylisticSet       = 8] {XITSMath-Regular}
 }
 
-\bool_if:NT \l__xmu_overleaf_font_bool{
-    % [Modified] Original overleaf font settings kept for reference.
+\bool_if:NT \l__xmu_local_font_bool{
+    % Use local fonts from the font/ directory.
     % \setmainfont{Noto~Serif}
     % \setsansfont{Noto~Sans}
     % \setmonofont{Noto~Mono}
