@@ -1,0 +1,21 @@
+\chapter{实验}{Experiments}
+
+\section{实验设置}{Experimental Setup}
+
+实验章节应说明数据集、评价指标、基线方法、实现细节和硬件环境。对于机器学习论文，还应报告随机种子、训练轮数、优化器、学习率、批大小以及模型选择标准。
+
+\section{主要结果}{Main Results}
+
+表\ref{tab:main-results}展示了实验结果表格的写法。正式论文中应保证每个数字都可以追溯到具体实验设置。
+
+\input{tabs/classification.tex}
+
+\section{消融实验}{Ablation Study}
+
+消融实验用于验证方法中关键组件是否真正贡献了性能提升。表\ref{tab:ablation-example}给出了一个占位示例。
+
+\input{tabs/ablation.tex}
+
+\section{误差分析}{Error Analysis}
+
+除总体指标外，还应分析模型在哪些样本、类别或场景下失败。误差分析可以帮助判断方法局限，并为后续改进提供证据。

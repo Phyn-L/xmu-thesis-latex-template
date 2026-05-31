@@ -1,0 +1,39 @@
+\chapter{绪论}{Introduction}
+
+\section{研究背景}{Background}
+
+本章用于介绍研究背景、问题来源、研究意义以及论文的整体结构。正式写作时，可以从领域发展、现实需求或已有方法的不足切入，逐步引出本文关注的具体问题。
+
+引用文献时，可以使用 \verb|\cite| 命令，例如 \LaTeX{} 是科技论文写作中常用的排版系统\cite{lamport1994latex}。
+
+\section{图表示例}{Figure and Table Examples}
+
+图\ref{fig:xmu-flag-example}展示了插图的基本写法。建议将论文图片放在 \verb|figs/| 目录下，并使用 PDF、PNG 或 JPG 等常见格式。
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.55\linewidth]{figs/xmu-flag.pdf}
+    \caption{\textbf{插图示例。}正式论文中应使用能够支持论证的图片，并在图注中说明关键信息。}
+    \label{fig:xmu-flag-example}
+\end{figure}
+
+表\ref{tab:notation-example}展示了三线表的基本写法。
+
+\begin{table}[htbp]
+    \centering
+    \caption{符号说明示例}
+    \label{tab:notation-example}
+    \begin{tabular}{ll}
+        \toprule
+        符号 & 含义 \\
+        \midrule
+        $x$ & 输入样本 \\
+        $y$ & 监督标签 \\
+        $f_\theta$ & 参数为 $\theta$ 的模型 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{论文组织结构}{Organization}
+
+本文档其余章节安排如下：第2章展示相关工作写法；第3章展示方法章节中的公式与算法；第4章展示实验章节与结果表格；第5章给出总结与展望示例。

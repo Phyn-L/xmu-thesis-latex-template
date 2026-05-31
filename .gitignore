@@ -1,0 +1,37 @@
+# macOS
+.DS_Store
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.tce
+*.toc
+*.xdv
+*.lof
+*.lot
+*.ilg
+*.ind
+*.idx
+*.nav
+*.snm
+*.vrb
+*.dvi
+
+# Generated output
+main.pdf
+
+# Private local files
+figs/sign.png
+font/
+Xiamen University Thesis Guidelines.md
+*修改意见*.md
+*.bak
+*.tmp

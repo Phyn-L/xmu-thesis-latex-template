@@ -1,0 +1,29 @@
+\PassOptionsToPackage{warnings-off={mathtools-colon,mathtools-overbracket}}{unicode-math}
+\documentclass[degree=undergraduate,bibstyle=numerical,font=fandol,notabs,nottoc]{xmuthesis}
+
+\usepackage{zhnumber}
+\renewcommand{\today}{\zhdate{\the\year/\the\month/\the\day}}
+
+\input{setup.tex}
+\usepackage{xmulogo}
+
+\begin{document}
+\maketitle
+
+\input{body/ack.tex}
+\input{body/abstract.tex}
+\xmutableofcontents
+
+\input{body/chapter1.tex}
+\input{body/chapter2.tex}
+\input{body/chapter3.tex}
+\input{body/chapter4.tex}
+\input{body/chapter5.tex}
+
+\bibliography{Reference}
+
+% \appendix
+% \chapter{附录}{Appendix}
+% 附录内容。
+
+\end{document}

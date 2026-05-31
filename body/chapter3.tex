@@ -1,0 +1,36 @@
+\chapter{方法}{Method}
+
+\section{问题定义}{Problem Formulation}
+
+设训练集为 $\mathcal{D}=\{(x_i,y_i)\}_{i=1}^{N}$，其中 $x_i$ 表示输入样本，$y_i$ 表示对应标签。本文目标是学习一个参数为 $\theta$ 的模型 $f_\theta$，使其在测试数据上取得良好的泛化性能。
+
+\section{模型设计}{Model Design}
+
+公式\eqref{eq:empirical-risk}给出了经验风险最小化的基本形式：
+
+\begin{equation}
+    \min_{\theta}\frac{1}{N}\sum_{i=1}^{N}\ell(f_\theta(x_i), y_i),
+    \label{eq:empirical-risk}
+\end{equation}
+
+其中，$\ell(\cdot,\cdot)$ 表示损失函数。正式论文中，公式之后应解释每个符号的含义，并说明该公式在方法中的作用。
+
+\section{算法流程}{Algorithm}
+
+算法\ref{alg:training-example}展示了算法环境的基本使用方式。
+
+\begin{algorithm}[htbp]
+    \caption{训练流程示例}
+    \label{alg:training-example}
+    \begin{algorithmic}[1]
+        \Require 训练集 $\mathcal{D}$，学习率 $\eta$，训练轮数 $T$
+        \Ensure 训练后的模型参数 $\theta$
+        \State 初始化模型参数 $\theta$
+        \For{$t=1$ to $T$}
+            \State 从 $\mathcal{D}$ 中采样一个小批量数据
+            \State 计算损失 $\ell(f_\theta(x), y)$
+            \State 使用梯度下降更新 $\theta \leftarrow \theta-\eta\nabla_\theta \ell$
+        \EndFor
+        \State \Return $\theta$
+    \end{algorithmic}
+\end{algorithm}
