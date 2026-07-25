@@ -6,7 +6,7 @@
 
 本项目在整理和验证过程中借助了[厦门大学信息学院媒体分析与计算实验室（MAC 实验室）](https://mac.xmu.edu.cn/)的资源。
 
-本模板基于 CamuseCao 原创并开源维护的 `xmuthesis` / `XMU-thesis` 模板整理而来，感谢原作者对厦门大学论文 \LaTeX{} 排版工作的贡献。
+本模板基于 CamuseCao 原创并开源维护的 `xmuthesis` / `XMU-thesis` 模板整理而来，感谢原作者对厦门大学论文 $\LaTeX$ 排版工作的贡献。
 
 本项目仅在MacOS系统上验证了本科毕业论文的版本，其他情况暂时无法验证。其他系统可以借助`Xiamen University Thesis Guidelines.md`和AgentAI来排查格式问题。
 
